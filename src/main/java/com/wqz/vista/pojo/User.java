@@ -3,9 +3,9 @@ package com.wqz.vista.pojo;
 public class User {
     private Integer id;
 
-    private Integer age;
+    private String age;
 
-    private Integer income;
+    private String income;
 
     private String homeaddress;
 
@@ -27,19 +27,19 @@ public class User {
         this.id = id;
     }
 
-    public Integer getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
-    public Integer getIncome() {
+    public String getIncome() {
         return income;
     }
 
-    public void setIncome(Integer income) {
+    public void setIncome(String income) {
         this.income = income;
     }
 

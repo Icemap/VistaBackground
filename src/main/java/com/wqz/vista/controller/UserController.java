@@ -24,7 +24,7 @@ public class UserController
 	
 	@RequestMapping("/create")
 	@ResponseBody
-	public Object create(Integer age,Integer income,String homeAddress,
+	public Object create(String age,String income,String homeAddress,
 			String workAddress,Integer projId,String vistaMatrix)
 	{
 		User user = new User();

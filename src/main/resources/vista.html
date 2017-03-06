@@ -19,6 +19,12 @@
 <script type="text/javascript"> 
 	var panorama = new BMap.Panorama('panorama'); 
 	panorama.setPov({heading: -40, pitch: 6});
-	panorama.setPosition(new BMap.Point(#{lon}, #{lat})); 		
+	panorama.setPosition(new BMap.Point(#{lon}, #{lat})); 	
+	panorama.setOptions({
+	      navigationControl: false 
+	    });
+	panorama.setOptions({
+	      linksControl: false //隐藏道路指示控件
+	    });
 </script>
 

@@ -1,2 +1,2 @@
 http://api.map.baidu.com/lbsapi/getpoint/index.html
-拾取百度坐标
+Catch Baidu Location(lon, lat)

@@ -3,8 +3,8 @@
 <mapper namespace="com.wqz.vista.dao.UserMapper" >
   <resultMap id="BaseResultMap" type="com.wqz.vista.pojo.User" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="age" property="age" jdbcType="INTEGER" />
-    <result column="income" property="income" jdbcType="INTEGER" />
+    <result column="age" property="age" jdbcType="VARCHAR" />
+    <result column="income" property="income" jdbcType="VARCHAR" />
     <result column="homeAddress" property="homeaddress" jdbcType="VARCHAR" />
     <result column="workAddress" property="workaddress" jdbcType="VARCHAR" />
     <result column="projId" property="projid" jdbcType="INTEGER" />
@@ -30,7 +30,7 @@
       homeAddress, workAddress, projId, 
       vistaMatrix, vistaResult, hold
       )
-    values (#{id,jdbcType=INTEGER}, #{age,jdbcType=INTEGER}, #{income,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{age,jdbcType=VARCHAR}, #{income,jdbcType=VARCHAR}, 
       #{homeaddress,jdbcType=VARCHAR}, #{workaddress,jdbcType=VARCHAR}, #{projid,jdbcType=INTEGER}, 
       #{vistamatrix,jdbcType=VARCHAR}, #{vistaresult,jdbcType=VARCHAR}, #{hold,jdbcType=VARCHAR}
       )
@@ -71,10 +71,10 @@
         #{id,jdbcType=INTEGER},
       </if>
       <if test="age != null" >
-        #{age,jdbcType=INTEGER},
+        #{age,jdbcType=VARCHAR},
       </if>
       <if test="income != null" >
-        #{income,jdbcType=INTEGER},
+        #{income,jdbcType=VARCHAR},
       </if>
       <if test="homeaddress != null" >
         #{homeaddress,jdbcType=VARCHAR},
@@ -100,10 +100,10 @@
     update user
     <set >
       <if test="age != null" >
-        age = #{age,jdbcType=INTEGER},
+        age = #{age,jdbcType=VARCHAR},
       </if>
       <if test="income != null" >
-        income = #{income,jdbcType=INTEGER},
+        income = #{income,jdbcType=VARCHAR},
       </if>
       <if test="homeaddress != null" >
         homeAddress = #{homeaddress,jdbcType=VARCHAR},
@@ -128,8 +128,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.wqz.vista.pojo.User" >
     update user
-    set age = #{age,jdbcType=INTEGER},
-      income = #{income,jdbcType=INTEGER},
+    set age = #{age,jdbcType=VARCHAR},
+      income = #{income,jdbcType=VARCHAR},
       homeAddress = #{homeaddress,jdbcType=VARCHAR},
       workAddress = #{workaddress,jdbcType=VARCHAR},
       projId = #{projid,jdbcType=INTEGER},

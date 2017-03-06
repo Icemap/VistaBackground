@@ -3,6 +3,8 @@ package com.wqz.utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Test;
+
 import com.google.gson.Gson;
 import com.wqz.vista.pojo.MatrixJsonBean;
 
@@ -68,6 +70,7 @@ public class Matrix2Rlt
 		return sb.toString();
 	}
 	
+	@Test
 	public void Main()
 	{
 		Double[][] MatrixArray = Matrix2Arrays("[{\"index\":\"1:5\",\"value\":\"62:38\"},{\"index\":\"1:6\",\"value\":\"76:24\"},{\"index\":\"1:7\",\"value\":\"35:65\"},{\"index\":\"5:6\",\"value\":\"67:33\"},{\"index\":\"5:7\",\"value\":\"28:72\"},{\"index\":\"6:7\",\"value\":\"69:31\"}]");

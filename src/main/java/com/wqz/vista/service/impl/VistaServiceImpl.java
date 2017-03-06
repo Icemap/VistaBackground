@@ -24,4 +24,9 @@ public class VistaServiceImpl implements VistaService
 	{
 		return vistaMapper.selectByBelong(projId);
 	}
+	
+	public Boolean updateVista(Vista vista)
+	{
+		return vistaMapper.updateByPrimaryKeySelective(vista) == 1;
+	}
 }

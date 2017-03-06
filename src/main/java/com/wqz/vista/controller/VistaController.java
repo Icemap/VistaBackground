@@ -35,4 +35,18 @@ public class VistaController
 	{
 		return vistaServiceImpl.getVistaByProjId(projId);
 	}
+	
+	@RequestMapping("/update")
+	@ResponseBody
+	public Object update(Integer id,String url,String content,Integer projId,Double lon,Double lat)
+	{
+		Vista vista = new Vista();
+		vista.setId(id);
+		vista.setUrl(url);
+		vista.setContent(content);
+		vista.setBelong(projId);
+		vista.setLon(lon);
+		vista.setLat(lat);
+		return vistaServiceImpl.updateVista(vista);
+	}
 }

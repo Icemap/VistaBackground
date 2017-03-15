@@ -1,5 +1,7 @@
 package com.wqz.vista.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.annotation.MapperScan;
 
 import com.wqz.vista.pojo.User;
@@ -18,4 +20,5 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
     
+    List<Integer> selectIdList();
 }

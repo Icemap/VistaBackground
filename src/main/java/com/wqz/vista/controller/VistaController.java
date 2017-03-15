@@ -49,4 +49,11 @@ public class VistaController
 		vista.setLat(lat);
 		return vistaServiceImpl.updateVista(vista);
 	}
+	
+	@RequestMapping("/delete")
+	@ResponseBody
+	public Object delete(Integer id)
+	{
+		return vistaServiceImpl.deleteVista(id);
+	}
 }

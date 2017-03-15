@@ -1,5 +1,7 @@
 package com.wqz.vista.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,4 +19,15 @@ public class UserServiceImpl implements UserService
 	{
 		return userMapper.insertSelective(user) == 1;
 	}
+
+	public List<Integer> getUserList()
+	{
+		return userMapper.selectIdList();
+	}
+
+	public User getById(Integer id)
+	{
+		return userMapper.selectByPrimaryKey(id);
+	}
+	
 }

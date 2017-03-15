@@ -29,4 +29,9 @@ public class VistaServiceImpl implements VistaService
 	{
 		return vistaMapper.updateByPrimaryKeySelective(vista) == 1;
 	}
+	
+	public Boolean deleteVista(Integer id)
+	{
+		return vistaMapper.deleteByPrimaryKey(id) == 1;
+	}
 }

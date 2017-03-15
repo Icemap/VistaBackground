@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Vista</title>
+
+	<body>
+		<div id="selectDiv">
+
+		</div> 
+
+		<br/><br/>
+
+		<div id="tableDiv">
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		function getUserIDList(json)
+		{
+			var selectInner = '<select id="select">';
+			for (var i = 0; i < json.length; i++) 
+			{
+				selectInner += '<option>' + json[i] + '</option>';
+			}
+			selectInner += '</select><input type="button" value="确定" onclick="requestUser()"/>';
+
+			var select = document.getElementById("selectDiv");
+			select.innerHTML = selectInner;
+		}
+
+		function requestUser()
+		{
+			var obj = document.getElementById("select");
+			var myElement = document.createElement("script");
+			myElement.src="http://wangqizhi.top:8080/vista/user/getUser?callback=setUserInfo&id=" + obj.options[obj.selectedIndex].text;
+			//添加到document.body
+			document.body.appendChild(myElement);
+		}
+
+		function setUserInfo(userInfo)
+		{
+			//<table border="1"><tr><td>row 1, cell 1</td><td>row 1, cell 2</td></tr><tr><td></td><td>row 2, cell 2</td></tr></table>
+			//getUser({"id":13,"age":"20岁以下","income":"4k以下","homeaddress":"46161","workaddress":"咯lol","projid":5,"vistamatrix":"[{\"index\":\"1:5\",\"value\":\"50:50\"},{\"index\":\"1:6\",\"value\":\"50:50\"},{\"index\":\"1:7\",\"value\":\"50:50\"},{\"index\":\"5:6\",\"value\":\"50:50\"},{\"index\":\"5:7\",\"value\":\"50:50\"},{\"index\":\"6:7\",\"value\":\"50:50\"}]","vistaresult":"1:5:6:7 \u003d 0.25:0.25:0.25:0.25"})
+			var inner = '<p>id:' + userInfo.id + '</p>';
+			inner += '<p>年龄:' + userInfo.age + '</p>';
+			inner += '<p>收入:' + userInfo.income + '</p>';
+			inner += '<p>家庭大略住址:' + userInfo.homeaddress + '</p>';
+			inner += '<p>工作大略地址:' + userInfo.workaddress + '</p>';
+			inner += '<p>项目编号:' + userInfo.projid + '</p>';
+
+			var matrix = eval(userInfo.vistamatrix);
+			inner += '<table border="1"><tr><th>全景ID</th><th>比值</th></tr>';
+
+			for (var i = 0; i < matrix.length; i++) 
+			{
+				inner += '<tr><td>' + matrix[i].index + '</td>';
+				inner += '<td>' + matrix[i].value + '</td></tr>';
+			}
+			inner += '</table></p>';
+
+			var result = userInfo.vistaresult.split('\u003d');
+			inner += '<table border="1"><tr><th>全景ID</th><th>连比比值</th></tr>';
+			inner += '<tr><td>' + result[0] + '</td><td>' + result[1] + '</td></tr>'
+			inner += '</table>';
+			var oDiv = document.getElementById("tableDiv");
+			oDiv.innerHTML = inner;
+		}
+
+	</script>
+	<script src="http://wangqizhi.top:8080/vista/user/getUserIDList?callback=getUserIDList"></script>
+
+</html>

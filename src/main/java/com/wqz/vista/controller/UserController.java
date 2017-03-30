@@ -2,7 +2,6 @@ package com.wqz.vista.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,9 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
-import com.wqz.utils.Matrix2Rlt;
+import com.wqz.utils.Matrix2RltNew;
 import com.wqz.vista.pojo.User;
-import com.wqz.vista.pojo.Vista;
 import com.wqz.vista.service.impl.UserServiceImpl;
 import com.wqz.vista.service.impl.VistaServiceImpl;
 
@@ -41,18 +39,8 @@ public class UserController
 		user.setVistamatrix(vistaMatrix);
 		user.setHold(hold);
 		
-		//此处通过矩阵计算结果
-		List<Vista> vl = vistaServiceImpl.getVistaByProjId(projId);
-		StringBuilder rlt = new StringBuilder();
-		for(int i = 0;i < vl.size();i++)
-		{
-			if(i != 0) rlt.append(":");
-			rlt.append(vl.get(i).getId());
-		}
-		rlt.append(" = ");
-		rlt.append(Matrix2Rlt.solve(vistaMatrix));
-		
-		user.setVistaresult(rlt.toString());
+		//此处计算结果
+		user.setVistaresult(Matrix2RltNew.solve(vistaMatrix));
 		
 		return userServiceImpl.createUserRecord(user);
 	}

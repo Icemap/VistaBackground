@@ -43,7 +43,10 @@
 			//<table border="1"><tr><td>row 1, cell 1</td><td>row 1, cell 2</td></tr><tr><td></td><td>row 2, cell 2</td></tr></table>
 			//getUser({"id":13,"age":"20岁以下","income":"4k以下","homeaddress":"46161","workaddress":"咯lol","projid":5,"vistamatrix":"[{\"index\":\"1:5\",\"value\":\"50:50\"},{\"index\":\"1:6\",\"value\":\"50:50\"},{\"index\":\"1:7\",\"value\":\"50:50\"},{\"index\":\"5:6\",\"value\":\"50:50\"},{\"index\":\"5:7\",\"value\":\"50:50\"},{\"index\":\"6:7\",\"value\":\"50:50\"}]","vistaresult":"1:5:6:7 \u003d 0.25:0.25:0.25:0.25"})
 			var inner = '<p>id:' + userInfo.id + '</p>';
+			var userMsg = JSON.parse(userInfo.hold);
+			inner += '<p>性别:' + userMsg.sex + '</p>';
 			inner += '<p>年龄:' + userInfo.age + '</p>';
+			inner += '<p>工作:' + userMsg.profession + '</p>';
 			inner += '<p>收入:' + userInfo.income + '</p>';
 			inner += '<p>家庭大略住址:' + userInfo.homeaddress + '</p>';
 			inner += '<p>工作大略地址:' + userInfo.workaddress + '</p>';
